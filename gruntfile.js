@@ -3,9 +3,7 @@ module.exports = function(grunt) {
 
     grunt.initConfig({
         clean: {
-            dev: {
-                files: ['dist/']
-            }
+            dev: ['dist/']
         },
         copy: {
             bootstrap: {
@@ -13,6 +11,12 @@ module.exports = function(grunt) {
                 cwd: 'node_modules/bootstrap/dist',
                 src: ['css/bootstrap.min.css', 'fonts/**', 'js/bootstrap.min.js'],
                 dest: 'dist/'
+            },
+            historyjs: {
+                expand: true,
+                cwd: 'node_modules/historyjs/scripts/bundled/html4+html5',
+                src: ['native.history.js'],
+                dest: 'dist/js'
             },
             fontAwesome: {
                 expand: true,
@@ -30,6 +34,12 @@ module.exports = function(grunt) {
                 expand: true,
                 cwd: 'src/',
                 src: ['index.html'],
+                dest: 'dist/'
+            },
+            js: {
+                expand: true,
+                cwd: 'src/',
+                src: ['js/**'],
                 dest: 'dist/'
             }
         },
@@ -52,7 +62,7 @@ module.exports = function(grunt) {
         },
         watch: {
             html: {
-                files: ['src/index.html', 'src/less/**'],
+                files: ['src/index.html', 'src/less/**', 'src/js/**'],
                 tasks: ['compile']
             }
         }

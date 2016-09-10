@@ -12,9 +12,17 @@ body {
     position: relative;
 }
 
-.intro-pic-holder {
+#page-body {
+    position: relative;
+
+    font-size: 1.5rem;
+}
+
+#page-intro {
     position: relative;
     margin: 0 -1.5rem;
+
+    z-index: 10;
 
     .intro-pic {
         background-image: url('http://placehold.it/1280x800');
@@ -32,44 +40,85 @@ body {
         position: absolute;
 
         width: 100%;
-        bottom: 8%;
+        bottom: 8vh;
 
         text-align: center;
         background-color: rgba(0, 0, 0, .2);
     }
 }
 
-.content {
-    section {
-        border-bottom: .1rem solid black;
+#page-body-content {
+    top: 0;
 
-        > div {
-            height: 40vh;
+    z-index: 9;
+}
+
+#main-navigation {
+    height: 52px;
+
+    .navbar {
+        margin: 0 -1.5rem;
+        z-index: 10;
+
+        &.affix {
+            top: 0;
+            width: 100%;
+        }
+    }
+}
+
+.page-content-holder {
+    position: relative;
+
+    .page-content {
+        position: absolute;
+        width: 100%;
+        left: 120%;
+
+        &.active {
+            left: 0;
+            
+            transition: left .25s;
         }
     }
 
-    section:last-child {
-        border-bottom-width: 0;
+    #home {
+        section {
+            margin: 0 -1.5rem 5vh -1.5rem;
+
+            > div {
+                height: 25vh;
+
+                &.img {
+                    background-image: url('http://placehold.it/200x200');
+                }
+            }
+
+            &.left {
+                text-align: right;
+            }
+        }
+
+        @media (min-width: @screen-sm-min) {
+            section {
+                margin: 0 -1.5rem 3rem -1.5rem;
+
+                > div {
+                    height: 40vh;
+                }
+            }
+
+            section:last-child {
+                border-bottom-width: 0;
+            }
+        }
     }
 }
 
 .img {
-    background-image: url('http://placehold.it/200x200');
     background-position: center;
     background-size: cover;
     background-repeat: none;
-
-    &.left {
-
-    }
-
-    &.right {
-
-    }
-}
-
-#main-navigation {
-    margin: 0 -1.5rem;
 }
 
 .cursive {
