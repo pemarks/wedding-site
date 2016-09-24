@@ -1,0 +1,41 @@
+<rt-import name="Link" from="react-router" />
+
+<div id="main-navigation">
+    <nav  class="navbar navbar-default">
+        <div class="navbar-header">
+            <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+            <a class="navbar-brand" href="#" title="Home page" onclick="page.changeState(event, 'home')"><i class="fa fa-home"></i></a>
+        </div>
+
+        <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+            <ul class="nav navbar-nav">
+                <li>
+                    <Link to="/about">
+                        <span><i class="fa fa-heart"></i> The Couple</span>
+                        <span class="sr-only">(current)</span>
+                    </Link>
+                </li>
+                <li>
+                    <Link to="/ceremony">
+                        <span>Ceremony</span>
+                    </Link>
+                </li>
+                <li>
+                    <Link to="/reception">
+                        <span>Reception</span>
+                    </Link>
+                </li>
+                <li>
+                    <Link to-"/registry">
+                        <span>Registry</span>
+                    </Link>
+                </li>
+            </ul>
+        </div>
+    </nav>
+</div>

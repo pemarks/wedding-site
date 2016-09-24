@@ -1,0 +1,8 @@
+import * as React from 'react';
+import * as _ from 'lodash';
+export default function () {
+    return React.createElement('div', {
+        'id': 'home',
+        'className': 'page-content'
+    }, React.createElement('section', { 'className': 'row left' }, React.createElement('div', { 'className': 'col-xs-4 col-sm-3 img' }), React.createElement('div', { 'className': 'col-xs-8 col-sm-9' }, React.createElement('h3', { 'className': 'cursive' }, 'The Bride and Groom'), React.createElement('p', {}, 'Information / pictures of each of us. Also a brief history about how we met and our relationship'))), React.createElement('section', { 'className': 'row right' }, React.createElement('div', { 'className': 'col-xs-8 col-sm-9' }, React.createElement('h3', { 'className': 'cursive' }, 'The Ceremony'), React.createElement('p', {}, 'A small ceremony held at a local chapel (TBD)')), React.createElement('div', { 'className': 'col-xs-4 col-sm-3 img' })), React.createElement('section', { 'className': 'row left' }, React.createElement('div', { 'className': 'col-xs-4 col-sm-3 img' }), React.createElement('div', { 'className': 'col-xs-8 col-sm-9' }, React.createElement('h3', { 'className': 'cursive' }, 'The Reception'), React.createElement('p', {}, 'Information about the rusty pelican (address, phone number, etc)'))), React.createElement('section', { 'className': 'row right' }, React.createElement('div', { 'className': 'col-xs-8 col-sm-9' }, React.createElement('h3', { 'className': 'cursive' }, 'Registry'), React.createElement('p', {}, 'Registry info')), React.createElement('div', { 'className': 'col-xs-4 col-sm-3 img' })));
+}

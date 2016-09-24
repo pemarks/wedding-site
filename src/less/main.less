@@ -1,4 +1,7 @@
-@import 'bootstrap/less/variables.less';
+@import 'less/variables';
+
+@import (css) 'dist/bootstrap';
+@import (css) 'font-awesome';
 
 html, body {
     height: 100vh;
@@ -71,15 +74,7 @@ body {
     position: relative;
 
     .page-content {
-        position: absolute;
         width: 100%;
-        left: 120%;
-
-        &.active {
-            left: 0;
-            
-            transition: left .25s;
-        }
     }
 
     #home {

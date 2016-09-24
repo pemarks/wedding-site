@@ -1,0 +1,15 @@
+<rt-import name="Router" from="react-router" />
+<rt-import name="Route" from="react-router" />
+<rt-import name="IndexRoute" from="react-router" />
+
+<rt-import name="PageRoot" from="app-js/pages/root" />
+<rt-import name="IntroPage" from="app-js/pages/intro" />
+<rt-import name="MainPage" from="app-js/pages/main" />
+
+<Router>
+    <Route path="/" component="{IntroPage}" />
+    <Route path="/home" component="{PageRoot}">
+        <IndexRoute component="{HomePage}" />
+        <Route path="main" component="{MainPage}" />
+    </Route>
+</Router>

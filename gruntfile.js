@@ -9,44 +9,35 @@ module.exports = function(grunt) {
             bootstrap: {
                 expand: true,
                 cwd: 'node_modules/bootstrap/dist',
-                src: ['css/bootstrap.min.css', 'fonts/**', 'js/bootstrap.min.js'],
+                src: ['fonts/**',],
                 dest: 'dist/'
-            },
-            historyjs: {
-                expand: true,
-                cwd: 'node_modules/historyjs/scripts/bundled/html4+html5',
-                src: ['native.history.js'],
-                dest: 'dist/js'
             },
             fontAwesome: {
                 expand: true,
                 cwd: 'node_modules/font-awesome',
-                src: ['css/font-awesome.min.css', 'fonts/**'],
+                src: ['fonts/**'],
                 dest: 'dist/'
-            },
-            jquery: {
-                expand: true,
-                cwd: 'node_modules/jquery/dist',
-                src: ['jquery.min.js'],
-                dest: 'dist/js'
             },
             html: {
                 expand: true,
                 cwd: 'src/',
                 src: ['index.html'],
                 dest: 'dist/'
-            },
-            js: {
-                expand: true,
-                cwd: 'src/',
-                src: ['js/**'],
-                dest: 'dist/'
+            }
+        },
+        reactTemplates: {
+            dev: {
+                src: ['**/*.rt'],
+                options: {
+                    modules: 'es6',
+                    format: 'stylish'
+                }
             }
         },
         less: {
             dev: {
                 options: {
-                    paths: ['node_modules/']
+                    paths: ['node_modules/bootstrap/', 'jspm_packages/npm/font-awesome@4.6.3/css/']
                 },
                 files: {
                     'dist/css/main.css': 'src/less/main.less'
@@ -68,6 +59,26 @@ module.exports = function(grunt) {
         }
     });
 
-    grunt.registerTask('compile', ['copy', 'less']);
+    grunt.registerTask('bundle', function() {
+        var SystemJS = require('systemjs-builder'),
+            Promise = require('bluebird'),
+            bundler = new SystemJS('./', './config.js'),
+            done = this.async();
+
+            grunt.log.writeln('Bundling content');
+
+            var bundlePromise = Promise.all([
+                bundler.bundle('[src/**/*.js]', 'dist/bundles/app-build.js'),
+                bundler.bundle('[src/**/*.js - [src/**/*.js]', 'dist/bundles/lib-build.js'),
+                bundler.bundle('jquery + bootstrap', 'dist/ui-build.js')
+            ]);
+            
+            bundlePromise.then(function() {
+                grunt.log.writeln('Finished bundling content');
+                done(true);
+            });
+    });
+
+    grunt.registerTask('compile', ['copy', 'less', 'reactTemplates', 'bundle']);
     grunt.registerTask('default', ['compile', 'express', 'watch']);
 };

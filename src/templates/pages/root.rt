@@ -1,0 +1,6 @@
+<rt-import name="HeaderComponent" from="app-js/components/header">
+
+<div>
+    <HeaderComponent />
+    {this.props.children}
+</div>

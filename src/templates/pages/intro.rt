@@ -1,0 +1,17 @@
+<rt-import name="Link" from="react-router" />
+
+<div id="page-intro">
+    <div class="hidden-xs">
+        <div class="intro-pic img"></div>
+    </div>
+    <div class="visible-xs-block">
+        <div class="intro-pic img xs"></div>
+    </div>
+
+    <div class="intro-heading">
+        <h2>The wedding of</h2>
+        <h1 class="cursive">Paul Marks <span>&</span> Sylicia Kittling</h1>
+        <h2>Saturday December 10, 2016</h2>
+        <Link class="intro-btn btn btn-primary" to="/main">Join Us!</Link>
+    </div>
+</div>
